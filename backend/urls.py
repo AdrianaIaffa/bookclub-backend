@@ -20,11 +20,19 @@ from rest_framework import routers
 from rest_framework_simplejwt import views as jwt_views
 from main_app import views
 
+
 router = routers.DefaultRouter()
 router.register(r'users', views.UserViewSet)
 router.register(r'groups', views.GroupViewSet)
-router.register(r'bookclubs', views.BookClubViewSet)
 router.register(r'registration', views.UserRegistrationView)
+router.register(r'create_bookclub', views.BookClubViewSet)
+router.register(r'bookclubs', views.BookClubViewSet)
+router.register(r'bookclubs/<int:pk>', views.BookClubViewSet)
+router.register(r'bookclubs/<int:pk>/join', views.BookClubViewSet)
+router.register(r'bookclubs/<int:pk>/leave', views.BookClubViewSet)
+router.register(r'bookclubs/<int:pk>/delete_bookclub', views.BookClubViewSet)
+router.register(r'bookclubs/<int:pk>/add_comment', views.BookClubViewSet)
+
 
 
 urlpatterns = [
@@ -33,8 +41,7 @@ urlpatterns = [
     path('token/refresh/', jwt_views.TokenRefreshView.as_view(), name ='token_refresh'),
     path('home/', views.HomeView.as_view(), name ='home'),
     path('logout/', views.LogoutView.as_view(), name ='logout'),
-    # path('registration/', views.UserRegistrationView.as_view(), name="user-registration"),
     path('', include(router.urls)),
-    path('api-auth/', include('rest_framework.urls', namespace='rest_framework'))
+    path('api-auth/', include('rest_framework.urls', namespace='rest_framework')),
 ]
 

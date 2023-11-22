@@ -9,7 +9,7 @@ https://docs.djangoproject.com/en/4.2/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.2/ref/settings/
 """
-
+import logging
 from pathlib import Path
 from datetime import timedelta
 
@@ -151,4 +151,30 @@ SIMPLE_JWT = {
      'REFRESH_TOKEN_LIFETIME': timedelta(days=1),
      'ROTATE_REFRESH_TOKENS': True,
      'BLACKLIST_AFTER_ROTATION': True
+}
+
+LOGGING = {
+    "version": 1,
+    "disable_existing_loggers": False,
+    "handlers": {
+        "console": {
+            "class": "logging.StreamHandler",
+        },
+    },
+    "root": {
+        "handlers": ["console"],
+        "level": "INFO",  # Adjust the root logger level to INFO
+    },
+    "loggers": {
+        "django": {
+            "handlers": ["console"],
+            "level": "INFO",  # Adjust the django logger level to INFO
+            "propagate": True,
+        },
+        __name__: {  # Add a custom logger for the current module (replace __name__ with the actual module name)
+            "handlers": ["console"],
+            "level": "DEBUG",  # Set the logging level to DEBUG
+            "propagate": True,
+        },
+    },
 }
