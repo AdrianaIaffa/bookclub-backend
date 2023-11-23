@@ -33,7 +33,11 @@ SECRET_KEY = 'django-insecure-t6$^gl9zleaiaaitzn&f5xe^dd^s6ab+njfn$y_ca80gu&4rjc
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    'bookclub-backend-production-9ffd.up.railway.app',
+    'bookclub-backend-production.up.railway.app',
+    'bookclub-backend.railway.internal'
+]
 
 
 # Application definition
