@@ -1,5 +1,5 @@
-import logging
 from django.contrib.auth.models import User, Group
+from django.http import Http404
 from rest_framework import viewsets, permissions, status
 from rest_framework.views import APIView
 from rest_framework import status
