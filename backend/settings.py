@@ -9,14 +9,21 @@ https://docs.djangoproject.com/en/4.2/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.2/ref/settings/
 """
-import logging
+
 from pathlib import Path
 from datetime import timedelta
+import environ
+import os
+
+env = environ.Env(
+    # set casting, default value
+    DEBUG=(bool, False)
+)
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-
+environ.Env.read_env(os.path.join(BASE_DIR, '.env'))
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
@@ -85,11 +92,11 @@ WSGI_APPLICATION = 'backend.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'bookclub',
-        'USER': 'adriana',
-        'PASSWORD': '',
-        'HOST': '127.0.0.1',
-        'PORT': '5432'
+        'NAME': os.environ['PGDATABASE'],
+        'USER': os.environ['PGUSER'],
+        'PASSWORD': os.environ['PGPASSWORD'],
+        'HOST': os.environ['PGHOST'],
+        'PORT': os.environ['PGPORT']
     }
 }
 
@@ -153,28 +160,3 @@ SIMPLE_JWT = {
      'BLACKLIST_AFTER_ROTATION': True
 }
 
-LOGGING = {
-    "version": 1,
-    "disable_existing_loggers": False,
-    "handlers": {
-        "console": {
-            "class": "logging.StreamHandler",
-        },
-    },
-    "root": {
-        "handlers": ["console"],
-        "level": "INFO",  # Adjust the root logger level to INFO
-    },
-    "loggers": {
-        "django": {
-            "handlers": ["console"],
-            "level": "INFO",  # Adjust the django logger level to INFO
-            "propagate": True,
-        },
-        __name__: {  # Add a custom logger for the current module (replace __name__ with the actual module name)
-            "handlers": ["console"],
-            "level": "DEBUG",  # Set the logging level to DEBUG
-            "propagate": True,
-        },
-    },
-}
