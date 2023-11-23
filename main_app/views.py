@@ -8,7 +8,7 @@ from rest_framework.response import Response
 from rest_framework.permissions import IsAuthenticated, AllowAny
 from rest_framework_simplejwt.tokens import RefreshToken
 from .serializers import UserSerializer, GroupSerializer, BookClubSerializer, UserRegistrationSerializer, CommentSerializer
-from .models import BookClub
+from .models import BookClub, Comment
 
 
 class UserViewSet(viewsets.ReadOnlyModelViewSet):
@@ -33,6 +33,13 @@ class BookClubViewSet(viewsets.ModelViewSet):
         serializer = self.get_serializer(bookclub)
         return Response(serializer.data)
     
+    @action(detail=True, methods=['GET'])
+    def comments(self, request, pk=None):
+        bookclub = self.get_object()
+        comments = Comment.objects.filter(bookclub=bookclub)
+        comment_serializer = CommentSerializer(comments, many=True)
+        return Response(comment_serializer.data)
+    
     def create(self, request, *args, **kwargs):
         serializer = self.get_serializer(data=request.data)
         serializer.is_valid(raise_exception=True)
@@ -46,6 +53,18 @@ class BookClubViewSet(viewsets.ModelViewSet):
         headers = self.get_success_headers(serializer.data)
         return Response(serializer.data, status=status.HTTP_201_CREATED, headers=headers)
     
+    @action(detail=True, methods=['PUT'])
+    def update_bookclub(self, request, pk=None):
+        try:
+            bookclub = self.get_object()
+            serializer = self.get_serializer(bookclub, data=request.data)
+            if serializer.is_valid():
+                serializer.save()
+                return Response(serializer.data)
+            return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+        except Http404:
+            return Response({"message": "Book club not found"}, status=status.HTTP_404_NOT_FOUND)
+
     @action(detail=True, methods=['POST'])
     def join(self, request, pk=None):
         bookclub = self.get_object()

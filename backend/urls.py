@@ -26,14 +26,14 @@ router.register(r'users', views.UserViewSet)
 router.register(r'groups', views.GroupViewSet)
 router.register(r'registration', views.UserRegistrationView)
 router.register(r'create_bookclub', views.BookClubViewSet)
-router.register(r'bookclubs', views.BookClubViewSet)
+router.register(r'bookclubs', views.BookClubViewSet, basename='bookclubs')
 router.register(r'bookclubs/<int:pk>', views.BookClubViewSet)
+router.register(r'bookclubs/<int:pk>/update_bookclub', views.BookClubViewSet)
 router.register(r'bookclubs/<int:pk>/join', views.BookClubViewSet)
 router.register(r'bookclubs/<int:pk>/leave', views.BookClubViewSet)
 router.register(r'bookclubs/<int:pk>/delete_bookclub', views.BookClubViewSet)
+router.register(r'bookclubs/<int:pk>/comments', views.BookClubViewSet)
 router.register(r'bookclubs/<int:pk>/add_comment', views.BookClubViewSet)
-
-
 
 urlpatterns = [
     path('admin/', admin.site.urls),
