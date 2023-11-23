@@ -36,9 +36,9 @@ DEBUG = True
 ALLOWED_HOSTS = [
     'bookclub-backend-production-9ffd.up.railway.app',
     'bookclub-backend-production.up.railway.app',
-    'bookclub-backend.railway.internal'
+    'bookclub-backend.railway.internal',
+    'localhost'
 ]
-
 
 # Application definition
 
@@ -146,10 +146,10 @@ STATIC_URL = 'static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-# CORS_ALLOWED_ORIGINS = [
-#     "http://localhost:3000",
-#     "http://127.0.0.1:3000"
-# ]
+CORS_ALLOWED_ORIGINS = [
+    "https://bookclub-frontend-production.up.railway.app",
+    # Add other allowed origins as needed
+]
 
 REST_FRAMEWORK = {
      'DEFAULT_AUTHENTICATION_CLASSES': [
