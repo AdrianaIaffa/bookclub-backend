@@ -31,7 +31,7 @@ environ.Env.read_env(os.path.join(BASE_DIR, '.env'))
 SECRET_KEY = 'django-insecure-t6$^gl9zleaiaaitzn&f5xe^dd^s6ab+njfn$y_ca80gu&4rjc'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = [
     'bookclub-backend-production-9ffd.up.railway.app',
@@ -70,9 +70,9 @@ MIDDLEWARE = [
 
 CORS_ORIGIN_ALLOW_ALL = True
 CORS_ALLOWED_ORIGINS = [
-    "*",
+    '*',
 ]
-CORS_ALLOW_CREDENTIALS = True
+
 
 CSRF_TRUSTED_ORIGINS = [
     'https://*bookclub-backend-production-9ffd.up.railway.app',
