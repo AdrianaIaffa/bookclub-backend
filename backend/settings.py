@@ -146,9 +146,9 @@ STATIC_URL = 'static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-# CORS_ALLOWED_ORIGINS = [
-#     "https://bookclub-frontend-production.up.railway.app",
-# ]
+CORS_ALLOWED_ORIGINS = [
+    "https://bookclub-frontend-production.up.railway.app",
+]
 
 REST_FRAMEWORK = {
      'DEFAULT_AUTHENTICATION_CLASSES': [
