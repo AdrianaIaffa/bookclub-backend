@@ -69,12 +69,8 @@ MIDDLEWARE = [
 ]
 
 CORS_ORIGIN_ALLOW_ALL = True
-
-CORS_ALLOW_METHODS = [
-    'DELETE',
-    'POST',
-    'GET', 
-    'PUT'
+CORS_ALLOWED_ORIGINS = [
+    "*",
 ]
 
 ROOT_URLCONF = 'backend.urls'
