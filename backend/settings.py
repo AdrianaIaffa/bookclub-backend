@@ -55,7 +55,6 @@ INSTALLED_APPS = [
     'rest_framework_simplejwt.token_blacklist'
 ]
 
-CORS_ORIGIN_ALLOW_ALL = True
 
 MIDDLEWARE = [
     'corsheaders.middleware.CorsMiddleware',
@@ -67,6 +66,15 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     
+]
+
+CORS_ORIGIN_ALLOW_ALL = True
+
+CORS_ALLOW_METHODS = [
+    'DELETE',
+    'POST',
+    'GET', 
+    'PUT'
 ]
 
 ROOT_URLCONF = 'backend.urls'
