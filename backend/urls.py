@@ -31,7 +31,7 @@ router.register(r'bookclubs/<int:pk>', views.BookClubViewSet)
 router.register(r'bookclubs/<int:pk>/update_bookclub', views.BookClubViewSet)
 router.register(r'bookclubs/<int:pk>/join', views.BookClubViewSet)
 router.register(r'bookclubs/<int:pk>/leave', views.BookClubViewSet)
-router.register(r'bookclubs/<int:pk>/delete_bookclub', views.BookClubViewSet)
+router.register(r'bookclubs/delete_bookclub/<int:pk>', views.BookClubViewSet)
 router.register(r'bookclubs/<int:pk>/comments', views.BookClubViewSet)
 router.register(r'bookclubs/<int:pk>/add_comment', views.BookClubViewSet)
 
