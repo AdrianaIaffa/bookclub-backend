@@ -74,6 +74,12 @@ CORS_ALLOWED_ORIGINS = [
 ]
 CORS_ALLOW_CREDENTIALS = True
 
+CSRF_TRUSTED_ORIGINS = [
+    'https://*bookclub-backend-production-9ffd.up.railway.app',
+    'https://*.railway.app/',
+    'http://localhost/'
+]
+
 ROOT_URLCONF = 'backend.urls'
 
 TEMPLATES = [
