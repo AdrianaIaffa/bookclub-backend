@@ -55,7 +55,6 @@ INSTALLED_APPS = [
     'rest_framework_simplejwt.token_blacklist'
 ]
 
-
 MIDDLEWARE = [
     'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
@@ -72,7 +71,6 @@ CORS_ORIGIN_ALLOW_ALL = True
 CORS_ALLOWED_ORIGINS = [
     '*',
 ]
-
 
 CSRF_TRUSTED_ORIGINS = [
     'https://*bookclub-backend-production-9ffd.up.railway.app',
